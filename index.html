@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Coding Bootcamp Testimonials Slider</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      :root {
+        --dark-blue: hsl(240, 38%, 20%);
+        --grayish-blue: hsl(240, 18%, 77%);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter";
+      }
+
+      .container {
+        padding: 2rem 0rem;
+        display: grid;
+        place-content: center;
+      }
+
+      .card {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 1rem;
+
+        @media only screen and (min-width: 600px) {
+          flex-direction: row-reverse;
+          text-align: start;
+        }
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("./images/pattern-curve.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom;
+        z-index: -1;
+      }
+
+      .card-image-container {
+        position: relative;
+        padding-top: 3rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card-image-container::after {
+        content: "";
+        position: absolute;
+        top: 16px;
+        left: 10px;
+        width: 100%;
+        height: 500px;
+        background-image: url("./images/pattern-bg.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: -1;
+      }
+
+      .card-image {
+        max-width: 290px;
+        box-shadow: 1px 30px 50px rgba(0, 0, 0, 0.2);
+        border-radius: 1rem;
+
+        @media only screen and (min-width: 600px) {
+          max-width: 400px;
+        }
+      }
+
+      .quote-container {
+        @media only screen and (min-width: 600px) {
+          position: relative;
+          left: 50px;
+          max-width: 500px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+      }
+
+      .card-text {
+        margin-top: 4rem;
+        font-weight: 300;
+        font-size: 1.3rem;
+        line-height: 1.7rem;
+
+        @media only screen and (min-width: 600px) {
+          font-size: 1.5rem;
+          line-height: 2rem;
+        }
+      }
+
+      .card-text::after {
+        content: "";
+        position: absolute;
+        top: 440px;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background-image: url("./images/pattern-quotes.svg");
+        background-repeat: no-repeat;
+        background-size: 70px;
+        background-position: center;
+        z-index: 1;
+      }
+
+      .card-information {
+        margin-top: 1rem;
+        @media only screen and (min-width: 600px) {
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+        }
+      }
+
+      .card-name {
+        color: var(--dark-blue);
+        font-size: 1.2rem;
+      }
+
+      .card-position {
+        color: var(--grayish-blue);
+        font-weight: 300;
+        font-size: 1.2rem;
+      }
+
+      .slider-button {
+        top: -20px;
+        position: relative;
+        width: fit-content;
+        background-color: white;
+        z-index: 1;
+        padding: 0.5rem;
+        border-radius: 50px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media only screen and (min-width: 600px) {
+          position: relative;
+          left: 2rem;
+          align-self: start;
+        }
+      }
+
+      .slider-button button#prev,
+      .slider-button button#next {
+        cursor: pointer;
+        outline: none;
+        border: none;
+        padding: 1rem 1.5rem;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .slider-button button#prev {
+        background-image: url("/images/icon-prev.svg");
+      }
+
+      .slider-button button#next {
+        background-image: url("/images/icon-next.svg");
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <div class="card">
+        <div class="card-image-container">
+          <img
+            id="image"
+            class="card-image"
+            alt="tanya"
+            src="./images/image-tanya.jpg"
+          />
+
+          <div class="slider-button">
+            <button id="prev" />
+            <button id="next" />
+          </div>
+        </div>
+
+        <div class="quote-container">
+          <p class="card-text">
+            <span id="quote">
+              “ I’ve been interested in coding for a while but never taken the
+              jump, until now. I couldn’t recommend this course enough. I’m now
+              in the job of my dreams and so excited about the future. ”
+            </span>
+          </p>
+
+          <div class="card-information">
+            <strong id="name" class="card-name">Tanya Sinclair</strong>
+            <p id="position" class="card-position">UX Engineer</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      let index = 0;
+
+      const quotes = [
+        {
+          name: "Tanya Sinclair",
+          position: "UX Engineer",
+          image: "./images/image-tanya.jpg",
+          quote:
+            "I’ve been interested in coding for a while but never taken the jump, until now. I couldn’t recommend this course enough. I’m now in the job of my dreams and so excited about the future. ",
+        },
+        {
+          name: "John Tarkpor",
+          position: "Junior Front-end Developer",
+          image: "./images/image-john.jpg",
+          quote:
+            "If you want to lay the best foundation possible I'd recommend taking this course. The depth the instructors go into is incredible. I now feel so confident about starting up as a professional developer.",
+        },
+      ];
+
+      const next = document.getElementById("next");
+      const prev = document.getElementById("prev");
+      next.addEventListener("click", shuffleQuote);
+      prev.addEventListener("click", shuffleQuote);
+
+      function shuffleQuote() {
+        if (index === 0) {
+          index++;
+        } else {
+          index--;
+        }
+
+        const image = (document.getElementById("image").src =
+          quotes[index].image);
+        const quote = (document.getElementById("quote").innerHTML =
+          quotes[index].quote);
+        const name = (document.getElementById("name").innerHTML =
+          quotes[index].name);
+        const position = (document.getElementById("position").innerHTML =
+          quotes[index].position);
+      }
+    </script>
+  </body>
+</html>
